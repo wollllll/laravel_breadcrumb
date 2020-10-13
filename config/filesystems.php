@@ -65,6 +65,10 @@ return [
             'endpoint' => env('AWS_ENDPOINT'),
         ],
 
+        'resource' => [
+            'driver' => 'local',
+            'root' => app_path() . '/../resources',
+        ]
     ],
 
 ];
