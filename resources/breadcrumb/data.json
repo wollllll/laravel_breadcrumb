@@ -2,5 +2,9 @@
     "categories.index": {
         "title": "カテゴリー一覧",
         "parent": null
+    },
+    "categories.show": {
+        "title": "カテゴリー詳細",
+        "parent": "categories.index"
     }
 }

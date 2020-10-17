@@ -1,11 +1,11 @@
 <section>
     <nav>
-        <ol class="custom-breadcrumb">
+        <ol class="breadcrumb">
             @foreach($data as $value)
                 @if($loop->last)
                     <li class="breadcrumb-item active">{{ Arr::get($value, 'title') }}</li>
                 @else
-                    <li class="custom-breadcrumb-item">
+                    <li class="breadcrumb-item">
                         <a href="{{ Arr::get($value, 'url') }}">
                             @if($loop->first)<i class="fas fa-tachometer-alt m-0 mr-1"></i>@endif
                             {{ Arr::get($value, 'title') }}
