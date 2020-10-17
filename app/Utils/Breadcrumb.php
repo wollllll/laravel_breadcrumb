@@ -57,24 +57,26 @@ class Breadcrumb
 
     /**
      * @param string $template
+     * @param array $params
      * @return View
      */
-    public static function current(string $template = ''): View
+    public static function current(string $template = '', array $params = []): View
     {
         $instance = self::instance($template);
 
-        return $instance->generateHtml(Route::currentRouteName());
+        return $instance->generateHtml(Route::currentRouteName(), $params);
     }
 
     /**
      * HTML出力
      *
      * @param string $name
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param array $params
+     * @return View
      */
-    private function generateHtml(string $name): View
+    private function generateHtml(string $name, array $params): View
     {
-        $data = $this->breadcrumbData($name);
+        $data = $this->breadcrumbData($name, $params);
 
         return view($this->template, compact('data'));
     }
@@ -83,15 +85,16 @@ class Breadcrumb
      * パンくずリストの生成
      *
      * @param string $name
+     * @param array $params
      * @return array|null
      */
-    private function breadcrumbData(string $name): ?array
+    private function breadcrumbData(string $name, array $params): ?array
     {
         $results = [];
 
         while ($data = $this->getBreadcrumbsByName($name)) {
             $results[] = array_merge($data, [
-                'url' => $this->generateUrl($name)
+                'url' => $this->generateUrl($name, $params)
             ]);
 
             $name = Arr::get($data, 'parent');
@@ -117,10 +120,11 @@ class Breadcrumb
      * url生成
      *
      * @param string $name
+     * @param array $params
      * @return string
      */
-    private function generateUrl(string $name): string
+    private function generateUrl(string $name, array $params): string
     {
-        return url(Arr::get(parse_url(route($name, request()->route()->parameters)), 'path'));
+        return url(Arr::get(parse_url(route($name, $params)), 'path'));
     }
 }

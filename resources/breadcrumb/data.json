@@ -10,5 +10,9 @@
     "posts.show": {
         "title": "投稿詳細",
         "parent": "categories.show"
+    },
+    "dummies.show": {
+        "title": "ダミーページ",
+        "parent": "categories.show"
     }
 }
