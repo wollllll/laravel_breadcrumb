@@ -125,9 +125,8 @@ class Breadcrumb
      */
     private function generateUrl(string $name, array $option): string
     {
-        $urlWithParams = route($name, $option);
-        $url = strstr($urlWithParams, '?', true);
+        $url = empty(strstr(route($name, $option), '?', true));
 
-        return isset($url) ? $url : $urlWithParams;
+        return $url ? route($name, $option) : route($name);
     }
 }

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class CategoryController extends Controller
 {
+    /**
+     * @return View
+     */
     public function index(): View
     {
         $categories = Category::get();
@@ -15,6 +17,10 @@ class CategoryController extends Controller
         return view('categories.index', compact('categories'));
     }
 
+    /**
+     * @param Category $category
+     * @return View
+     */
     public function show(Category $category): View
     {
         $category->load('posts');
