@@ -38,7 +38,7 @@ class Breadcrumb
     private function __construct(string $template)
     {
         $this->template = $template;
-        $this->data = json_decode(Storage::disk('resource')->get(config('breadcrumb.file')), true);
+        $this->data = json_decode(Storage::disk('resource')->get(config('breadcrumbs.file')), true);
     }
 
     /**
