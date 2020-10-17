@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        {{ \App\Utils\Breadcrumb::current('components.breadcrumbs', ['category' => $category, 'post' => $post, 'dummy' => 1]) }}
+        {{ \App\Utils\Breadcrumb::current('components.breadcrumbs', ['category' => $category, 'post' => $post]) }}
 
         {{ $post->title }}
     </div>

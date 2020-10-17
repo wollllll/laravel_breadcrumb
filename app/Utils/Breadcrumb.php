@@ -2,6 +2,7 @@
 
 namespace App\Utils;
 
+use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -45,6 +46,7 @@ class Breadcrumb
      *
      * @param string $template
      * @return static
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public static function instance(string $template): self
     {
@@ -59,6 +61,7 @@ class Breadcrumb
      * @param string $template
      * @param array $params
      * @return View
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public static function current(string $template = '', array $params = []): View
     {
@@ -87,6 +90,7 @@ class Breadcrumb
      * @param string $name
      * @param array $params
      * @return array|null
+     * @throws Exception
      */
     private function breadcrumbData(string $name, array $params): ?array
     {
@@ -122,6 +126,7 @@ class Breadcrumb
      * @param string $name
      * @param array $params
      * @return string
+     * @throws Exception
      */
     private function generateUrl(string $name, array $params): string
     {
