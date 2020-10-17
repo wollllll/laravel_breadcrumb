@@ -6,5 +6,9 @@
     "categories.show": {
         "title": "カテゴリー詳細",
         "parent": "categories.index"
+    },
+    "posts.show": {
+        "title": "投稿詳細",
+        "parent": "categories.show"
     }
 }
